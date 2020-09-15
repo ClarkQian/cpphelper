@@ -107,4 +107,120 @@
       childchild(int a):father(a){};
       ```
 
+## 多态性
+
+1. 运算符重载
+
+   1. 整体
+
+      ```c++
+      函数类型 operator operand(params){
+        
+      }
       
+      ```
+
+      
+
+   2. 单目运算符
+
+      ```c++
+      //++a
+      Clock& operator++();
+      
+      
+      //a++
+      //只是用来区分的，这个Int是没有什么用的 
+      Clock operator ++(int a);
+      ```
+
+      
+
+   3. 双目运算符
+
+      ```c++
+      Complex operator - (const Complex& c2) const;
+      
+      Complex Complex::operator - (const Complex&c2) const{
+        return Complex(real - c2.real, imag-c.image);
+      }
+      ```
+
+   4. 运算符重载为非成员函数
+
+      - 左操作数不再是对象自己
+      - 例如cout<<重载
+
+2. 虚函数
+
+   - 告诉编译器要做动态绑定，而不是在编译阶段静待绑定，实现动态重载，就是虽然名字是相同的，但是想使用哪里的就是用哪里的，无论继承了多少层
+
+   - 使用基类指针实现统一性
+
+   - 每一个同名的都要是virtual,这个和虚继承不一样
+
+     ```c++
+     class Base1{
+       public:
+       	virtual void display()const;
+       //可能实现必须放在外面，但是我这个Mac上面的测试没出现问题
+       
+     }
+     class Base2{
+       virtual...
+     }
+     class Base3{
+       virtual...
+     }
+     
+     void fun(Base1 * ptr){
+       ptr -> display();
+     }
+     
+     
+     void main(){
+       //base1
+       //base2
+       //base3
+       fun(&base1);
+       fun(&base2);
+       fun(&base3); 
+     }
+     ```
+
+   
+
+   - 析构虚函数（因为这个一定是同名的）
+
+3. 抽象类
+
+   1. 纯虚函数
+
+      有没有实现的函数体，因为基类的信息不够具体，没有办法定义；但是可以写出框架，只能作为基类用
+
+      `不可以实例化`
+
+      ```c++
+      virtual void function() = 0;//=0表示没有函数体
+      ```
+
+      ㊙️必须实现base abstract里面的所有方法，const也必须是相同的
+
+   2. 参数表写错了怎么办，语法检查是不会发现的，但是运行的时候会错误(c++11)自己让编译器告诉我
+
+      ```c++
+          virtual void show() const override;
+      
+      ```
+
+   3. 添加了final就是无法再继承的
+
+      ```c++
+      struct base1 final{
+        
+      }; 
+      ```
+
+      
+
+
