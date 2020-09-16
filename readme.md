@@ -223,4 +223,85 @@
 
       
 
+## STL
+
+1. 通用功能
+
+   ```c++
+   constructor;
+   ==;!=;<;>;
+   begin();
+   end();
+   clear();
+   empty();
+   size();
+   s1.swap(s2);
+   S::iterator;
+   S::reverse_iterator;
+   S::const_iterator;
+   S::const_reverse_iterator;
+   ```
+
+   
+
+2. 顺序容器
+   - vector
+   - deque
+     - Push_back()
+     - Push_front()
+     - Pop_back()
+     - pop_front()
+     - at
+     - front
+     - Back 
+   - list
+     - Push_back()
+     - Pop_back()
+     - Push_front()
+     - Pop_front()
+     - front
+     - Back
+   - forward_list(单向链表)
+     - Push_front
+     - Pop_front
+     - Front()
+   - array
+   - queue
+   - stack
+
+3. 关联容器
+
+   - set
+
+     - insert
+     - Erase 
+
+   - map
+
+     - insert
+
+     - find
+
+     - At  
+
+       ```c++
+       map.insert(std::pair<stirng,int>("mike",12));
+       map::iterator itr = map.find("mike");
+       
+       if(itr != m.end()){
+         cout<<itr -> first<<" "<<itr -> second<<endl;
+       }
+       
+       
+       
+       ```
+
+       
+
+   - mutiset
+
+   - multimap
+
+     - 可以插入相同的
+
 
