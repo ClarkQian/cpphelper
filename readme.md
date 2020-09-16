@@ -304,4 +304,121 @@
 
      - 可以插入相同的
 
+## io
+
+1. 输出流
+
+   1. ostream
+
+   2. ofstream
+
+   3. ostringstream
+
+   4. cout
+
+      ```c++
+      //标准输出重定向
+      ofstream fout("b.out");// or ofstream fout; fout.open("b.out");
+      // firle mode
+      // ios_base::out|ios_base::binary
+      streambuf* pOld = cout.rdbuf(fout.rdbuf());
+      //...
+      //go back
+      cout.rdbuf(pOld);
+      ```
+
+      
+
+   5. cerr
+
+   6. clog
+
+2. 文件输出
+
+   1. 操纵符（manipulator）
+
+      1. 头文件
+         - iOS_base
+         - iomanip
+
+      2. 操作
+         - 紧跟有效
+           - setw
+           - Width
+         - 持久
+           - dec
+           - ocx
+           - hex
+
+      2. 二进制
+
+         ```c++
+         Date dt = {2,3,4}
+         ofstream file("date.dat",ios_base::binary);
+         file.write(reinterpret_cast<char*>(&dt),sizeof(dt));
+         file.close();
+         
+         ```
+
+         
+
+      3. 向字符串输出(转换成字符串)
+
+         ```C++
+         int a = 12;
+         stringstream os;
+         os<<a;
+         stirng ac;
+         os>>ac;
+         ```
+
+         
+
+3. 输入流
+
+   - istream
+
+   - ifstream
+
+   - Istringstream
+
+   - 函数
+
+     - get() 和(cin很像，但是包括空白符)
+     - getline()
+     - Read()二进制读
+
+     ```c++
+     while((ch = cin.get()) != EOF){
+       cout.put(ch);
+     }
+     string line;
+     getline(cin,line,'t');//terminated by 't', default one is newLine
+     ```
+
+     
+
+## 异常处理
+
+```c++
+throw x;// x go to catch
+
+
+try
+  statement;
+catch(error)
+  statement;
+catch(error)
+  statement;
+
+try{
+  int x = 12;
+  throw x;
+} catch(int e){
+  cout<<"error "<<e<<endl;
+}
+//析构自动执行
+void fun()thorw(A,B,C,D)//可能抛出的异常
+```
+
 
