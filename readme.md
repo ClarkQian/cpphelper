@@ -166,11 +166,11 @@
        //可能实现必须放在外面，但是我这个Mac上面的测试没出现问题
        
      }
-     class Base2{
+     class Base2:Base1{
        virtual...
      }
-     class Base3{
-       virtual...
+     class Base3:Base2{
+       virtual... //注意这里即便后面差一个const,也会因为未重载而报错
      }
      
      void fun(Base1 * ptr){
